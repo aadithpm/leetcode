@@ -5,6 +5,13 @@ class Solution:
         :type b: int
         :rtype: int
         """
+
+        """
+        Hacky python solution:
+
+        return sum((a, b))
+        """
+        
         if a == 0: return b
         if b == 0: return a
         mask = 0xffffffff
