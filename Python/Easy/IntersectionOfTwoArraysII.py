@@ -17,3 +17,17 @@ class Solution:
             return make_intersect(nums2, nums1)
         
         return make_intersect(nums1, nums2)
+    
+"""
+from collections import Counter
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums1_dict = dict(Counter(nums1))
+        nums2_dict = dict(Counter(nums2))
+        intersection = []
+        for key, value in nums1_dict.items():
+            if key in nums2_dict.keys():
+                intersection.extend([key] * min(nums1_dict[key], nums2_dict[key]))
+        return intersection
+        
+"""
