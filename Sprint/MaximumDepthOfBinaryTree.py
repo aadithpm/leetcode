@@ -6,8 +6,16 @@
 #         self.right = None
 
 class Solution:
-    def maxDepth(self, root: TreeNode) -> int:
+    def minDepth(self, root: TreeNode) -> int:
         if not root:
             return 0
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
         
+        queue = collections.deque()
+        queue.append([root, 1])
+        while queue:
+            node, depth = queue.popleft()
+            if node:
+                if not node.left and not node.right:
+                    return depth
+                queue.append([node.left, depth + 1])
+                queue.append([node.right, depth + 1])
