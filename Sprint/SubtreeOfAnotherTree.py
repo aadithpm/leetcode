@@ -5,6 +5,31 @@
 #         self.left = None
 #         self.right = None
 
+"""
+# Merkle hashing:
+
+class Solution:
+    def isSubtree(self, s, t):
+        def merkle(node):
+            if not node:
+                return '#'
+            left_hash = merkle(node.left)
+            right_hash = merkle(node.right)
+            node.merkle = '#' + ' ' + left_hash + ' ' + str(node.val) + ' ' + right_hash
+            return node.merkle
+
+        merkle(s)
+        merkle(t)
+
+        def dfs(node):
+            if not node:
+                return False
+            return node.merkle == t.merkle or (dfs(node.left) or dfs(node.right))
+
+        return dfs(s)
+        
+"""
+
 class Solution:
     def same(self, s, t):
             if not s and not t:
