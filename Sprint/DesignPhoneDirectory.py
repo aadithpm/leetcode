@@ -80,3 +80,53 @@ class PhoneDirectory:
 # param_1 = obj.get()
 # param_2 = obj.check(number)
 # obj.release(number)
+
+
+#
+# Queue and Set
+#
+
+from queue import Queue
+class PhoneDirectory:
+
+    def __init__(self, maxNumbers: int):
+        """
+        Initialize your data structure here
+        @param maxNumbers - The maximum numbers that can be stored in the phone directory.
+        """
+        self.queue = Queue(maxsize = maxNumbers)
+        self.used = set()
+        for i in range(maxNumbers):
+            self.queue.put(i)
+    
+    def get(self) -> int:
+        """
+        Provide a number which is not assigned to anyone.
+        @return - Return an available number. Return -1 if none is available.
+        """
+        if self.queue.empty():
+            return -1
+        i = self.queue.get()
+        self.used.add(i)
+        return i
+
+    def check(self, number: int) -> bool:
+        """
+        Check if a number is available or not.
+        """
+        return not number in self.used
+
+    def release(self, number: int) -> None:
+        """
+        Recycle or release a number.
+        """
+        if number in self.used:
+            self.used.remove(number)
+            self.queue.put(number)
+
+
+# Your PhoneDirectory object will be instantiated and called as such:
+# obj = PhoneDirectory(maxNumbers)
+# param_1 = obj.get()
+# param_2 = obj.check(number)
+# obj.release(number)
